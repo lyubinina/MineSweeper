@@ -101,7 +101,7 @@ public class MineSweeper {
 						StdDraw.setPenColor(StdDraw.DARK_GRAY);
 						break;
 					}
-					StdDraw.text(scaledX, scaledY, new Integer(text).toString());
+					StdDraw.text(scaledX, scaledY, Integer.toString(text));
 				}
 
 				if (model.getTile(i, j).isCovered()) {
@@ -212,16 +212,11 @@ public class MineSweeper {
 				model.getTile(row, column).setFlag();
 			}
 
-			else if (model.getTile(row, column).getFlag()) {
-
-			} else {
-				model.uncover(row, column);
-			}
+			else if (!model.getTile(row, column).getFlag()) model.uncover(row, column);
 
 			lastClick[0] = row;
 			lastClick[1] = column;
 			unClick = false;
-			return;
 		}
 	}
 
